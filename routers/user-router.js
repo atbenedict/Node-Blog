@@ -4,6 +4,12 @@ const User = require("../data/helpers/userDb");
 
 const router = express.Router();
 
+function nameToUpper(req, res, next) {
+  const userName = req.body.name;
+  req.body.name = userName.toUpperCase();
+  next();
+}
+
 router.get("/", async (req, res) => {
   try {
     const users = await User.get();
@@ -34,7 +40,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", nameToUpper, async (req, res) => {
   try {
     const user = await User.insert(req.body);
     res.status(201).json(user);
@@ -62,7 +68,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", nameToUpper, async (req, res) => {
   try {
     const user = await User.update(req.params.id, req.body);
     if (user) {
