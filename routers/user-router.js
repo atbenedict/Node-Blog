@@ -51,7 +51,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const count = await User.remove(req.params.id);
     if (count > 0) {
-      res.status(200).json({ message: "The user has been nuked" });
+      res.status(200).json({ message: "The user has been deleted" });
     } else {
       res.status(404).json({ message: "The user could not be found" });
     }
