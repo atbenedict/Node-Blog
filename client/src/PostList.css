@@ -1,0 +1,22 @@
+.PostCard {
+  margin: 3vw auto;
+  padding: 30px;
+  font-size: 3vw;
+  line-height: 3.5vw;
+  background: #cdb380;
+  text-shadow: 1px 1px 1px rgb(0, 31, 31);
+  -webkit-box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.64);
+  box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.64);
+}
+
+.PostData {
+  font-family: "Felipa", cursive;
+  font-size: 2.5vw;
+  color: #031634;
+  text-shadow: 2px 2px 5px rgb(0, 31, 31);
+}
+
+.PostContent {
+  font-size: 4vw;
+  margin-top: 30px;
+}
