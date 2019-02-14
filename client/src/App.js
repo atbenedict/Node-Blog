@@ -11,9 +11,13 @@ class App extends Component {
     this.state = {
       posts: []
     };
+    this.connectToServer = this.connectToServer.bind(this);
   }
-
+  connectToServer() {
+    fetch("/");
+  }
   componentDidMount() {
+    this.connectToServer();
     axios
       .get(postsURL)
       .then(res => {

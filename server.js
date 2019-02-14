@@ -12,6 +12,22 @@ server.use(express.json());
 server.use(helmet());
 server.use(morgan("dev"));
 
+//Static file declaration
+// server.use(express.static(path.join(__dirname, "client/build")));
+
+//production mode
+if (process.env.NODE_ENV === "production") {
+  server.use(express.static(path.join(__dirname, "client/build")));
+  //
+  server.get("*", (req, res) => {
+    res.sendfile(path.join((__dirname = "client/build/index.html")));
+  });
+}
+//build mode
+server.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+});
+
 server.use("/api/posts", postRouter);
 server.use("/api/users", userRouter);
 
